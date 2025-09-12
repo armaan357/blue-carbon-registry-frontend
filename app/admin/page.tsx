@@ -111,6 +111,7 @@ export default function AdminPage() {
               status: "verified" as const,
               carbonEstimateKg: carbonEstimate,
               verificationDate: new Date().toISOString(),
+              tokensIssued: undefined,
             }
           : p,
       ),
@@ -132,6 +133,9 @@ export default function AdminPage() {
               ...p,
               status: "minted" as const,
               tokensIssued: tokenAmount,
+              // Ensure required fields are present
+              carbonEstimateKg: p.carbonEstimateKg ?? 0,
+              verificationDate: p.verificationDate ?? new Date().toISOString(),
             }
           : p,
       ),

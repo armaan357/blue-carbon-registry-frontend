@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { MapPin, Calendar, Leaf, Eye, Award, Clock } from "lucide-react"
 
-interface PlantationRecord {
+export interface PlantationRecord {
   id: string
   projectName: string
   organizer: string

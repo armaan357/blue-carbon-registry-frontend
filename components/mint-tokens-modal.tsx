@@ -13,8 +13,17 @@ interface PlantationRecord {
   id: string
   projectName: string
   organizer: string
-  carbonEstimateKg: number
-  status: "verified" | "minted"
+  location: { lat: number; lng: number; name: string }
+  species: string
+  countPlanted: number
+  status: "verified" | "minted" | "pending"
+  carbonEstimateKg?: number
+  tokensIssued?: number
+  createdAt: string
+  verificationDate?: string
+  blockchainTxHash?: string
+  description: string
+  images: string[]
 }
 
 interface MintTokensModalProps {
@@ -31,8 +40,8 @@ export function MintTokensModal({ plantation, isOpen, onClose, onMint }: MintTok
 
   if (!plantation) return null
 
-  const suggestedTokens = Math.floor(plantation.carbonEstimateKg / 100) // 1 token per 100kg CO2
-  const maxTokens = Math.floor(plantation.carbonEstimateKg / 50) // Max 1 token per 50kg CO2
+  const suggestedTokens = Math.floor(plantation.carbonEstimateKg! / 100) // 1 token per 100kg CO2
+  const maxTokens = Math.floor(plantation.carbonEstimateKg! / 50) // Max 1 token per 50kg CO2
 
   const handleMint = async () => {
     if (!walletAddress || !tokenAmount || Number.parseInt(tokenAmount) <= 0) return
@@ -177,15 +186,20 @@ export function MintTokensModal({ plantation, isOpen, onClose, onMint }: MintTok
                       </>
                     )}
                   </Button>
-
-                  <Button
+                  <a 
+                  href="https://etherscan.io"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                    <Button
                     variant="outline"
-                    onClick={() => window.open("https://etherscan.io", "_blank")}
+                    // onClick={() => window?.open(, "_blank")}
                     className="flex items-center space-x-2"
                   >
                     <ExternalLink className="h-4 w-4" />
                     <span>View on Etherscan</span>
                   </Button>
+                </a>
+                  
                 </div>
 
                 {isMinting && (

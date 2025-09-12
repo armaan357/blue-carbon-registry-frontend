@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent } from "@/components/ui/card"
 import { Navbar } from "@/components/navbar"
-import { PlantationCard } from "@/components/plantation-card"
+import { PlantationCard, PlantationRecord } from "@/components/plantation-card"
 import { PlantationDetailsModal } from "@/components/plantation-details-modal"
 import { Search, Filter, MapPin, BarChart3 } from "lucide-react"
 
@@ -79,7 +79,7 @@ export default function RegistryPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState<string>("all")
   const [speciesFilter, setSpeciesFilter] = useState<string>("all")
-  const [selectedPlantation, setSelectedPlantation] = useState<(typeof mockPlantations)[0] | null>(null)
+  const [selectedPlantation, setSelectedPlantation] = useState<PlantationRecord | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const filteredPlantations = useMemo(() => {
@@ -96,9 +96,9 @@ export default function RegistryPage() {
     })
   }, [searchTerm, statusFilter, speciesFilter])
 
-  const handleViewDetails = (plantation: (typeof mockPlantations)[0]) => {
-    setSelectedPlantation(plantation)
-    setIsModalOpen(true)
+  const handleViewDetails = (plantation: PlantationRecord) => {
+    setSelectedPlantation(plantation);
+    setIsModalOpen(true);
   }
 
   const stats = {

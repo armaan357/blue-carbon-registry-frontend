@@ -105,25 +105,36 @@ export function TokenBalance({ walletAddress }: TokenBalanceProps) {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button
+                <a 
+                  href="https://uniswap.org"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <Button
                   variant="outline"
                   className="flex items-center space-x-2 bg-transparent"
-                  onClick={() => window.open("https://uniswap.org", "_blank")}
+                  // onClick={() => window?.open(, "_blank")}
                 >
                   <TrendingUp className="h-4 w-4" />
                   <span>Trade on DEX</span>
                   <ExternalLink className="h-4 w-4" />
                 </Button>
-
-                <Button
-                  variant="outline"
-                  className="flex items-center space-x-2 bg-transparent"
-                  onClick={() => window.open(`https://etherscan.io/token/0x...?a=${walletAddress}`, "_blank")}
-                >
-                  <Coins className="h-4 w-4" />
-                  <span>View on Etherscan</span>
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
+                </a>
+                
+                <a 
+                  href={`https://etherscan.io/token/0x...?a=${walletAddress}`}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <Button
+                    variant="outline"
+                    className="flex items-center space-x-2 bg-transparent"
+                    // onClick={() => window?.open(, "_blank")}
+                  >
+                    <Coins className="h-4 w-4" />
+                    <span>View on Etherscan</span>
+                    <ExternalLink className="h-4 w-4" />
+                  </Button>
+                </a>
+                
               </div>
             </div>
           )}

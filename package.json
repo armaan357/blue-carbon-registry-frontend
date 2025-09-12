@@ -44,6 +44,7 @@
     "cmdk": "latest",
     "date-fns": "latest",
     "embla-carousel-react": "latest",
+    "framer-motion": "latest",
     "geist": "latest",
     "input-otp": "latest",
     "lucide-react": "latest",
@@ -52,6 +53,7 @@
     "react": "latest",
     "react-day-picker": "latest",
     "react-dom": "latest",
+    "react-dropzone": "latest",
     "react-hook-form": "latest",
     "react-resizable-panels": "latest",
     "recharts": "latest",
@@ -59,15 +61,14 @@
     "tailwind-merge": "latest",
     "tailwindcss-animate": "latest",
     "vaul": "latest",
-    "zod": "latest",
-    "framer-motion": "latest",
-    "react-dropzone": "latest"
+    "zod": "latest"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "eslint": "^9.35.0",
     "postcss": "latest",
     "tailwindcss": "latest",
     "tw-animate-css": "latest",

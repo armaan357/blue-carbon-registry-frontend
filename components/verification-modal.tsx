@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { X, CheckCircle, XCircle, MapPin, Calendar, Leaf, AlertTriangle } from "lucide-react"
+import { useRouter } from "next/router"
 
 interface PlantationRecord {
   id: string
@@ -38,6 +39,7 @@ export function VerificationModal({ plantation, isOpen, onClose, onVerify, onRej
   const [isVerifying, setIsVerifying] = useState(false)
   const [isRejecting, setIsRejecting] = useState(false)
   const [showRejectForm, setShowRejectForm] = useState(false)
+  const router = useRouter();
 
   if (!plantation) return null
 
@@ -216,20 +218,18 @@ export function VerificationModal({ plantation, isOpen, onClose, onVerify, onRej
                             <li>✓ Documentation review</li>
                           </ul>
                         </div>
-
-                        <Button
-                          onClick={() =>
-                            window.open(
-                              `https://maps.google.com/?q=${plantation.location.lat},${plantation.location.lng}`,
-                              "_blank",
-                            )
-                          }
-                          variant="outline"
-                          className="w-full"
-                        >
-                          <MapPin className="h-4 w-4 mr-2" />
-                          Verify Location on Map
-                        </Button>
+                        <a href={`https://maps.google.com/?q=${plantation.location.lat},${plantation.location.lng}`}
+                          target="_blank"
+                          rel="noopener noreferrer">
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                          >
+                            <MapPin className="h-4 w-4 mr-2" />
+                            Verify Location on Map
+                          </Button>
+                        </a>
+                        
                       </div>
                     </div>
 

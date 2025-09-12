@@ -179,19 +179,25 @@ export function PlantationDetailsModal({ plantation, isOpen, onClose }: Plantati
                       {plantation.blockchainTxHash && (
                         <div className="flex items-center space-x-2">
                           <span className="text-sm font-medium">Blockchain TX:</span>
-                          <Button
+                          <a 
+                            href={`https://etherscan.io/tx/${plantation.blockchainTxHash}`}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                              <Button
                             variant="link"
                             size="sm"
                             className="p-0 h-auto text-primary"
-                            onClick={() =>
-                              window.open(`https://etherscan.io/tx/${plantation.blockchainTxHash}`, "_blank")
-                            }
+                            // onClick={() =>
+                            //   window?.open(, "_blank")
+                            // }
                           >
                             <span className="font-mono text-xs">
                               {plantation.blockchainTxHash.slice(0, 10)}...{plantation.blockchainTxHash.slice(-8)}
                             </span>
                             <ExternalLink className="h-3 w-3 ml-1" />
                           </Button>
+                          </a>
+                          
                         </div>
                       )}
                     </div>
@@ -200,13 +206,17 @@ export function PlantationDetailsModal({ plantation, isOpen, onClose }: Plantati
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                  <Button
-                    onClick={() =>
-                      window.open(
-                        `https://maps.google.com/?q=${plantation.location.lat},${plantation.location.lng}`,
-                        "_blank",
-                      )
-                    }
+                  <a 
+                  href={`https://maps.google.com/?q=${plantation.location.lat},${plantation.location.lng}`}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                    <Button
+                    // onClick={() =>
+                    //   window?.open(
+                    //     ,
+                    //     "_blank",
+                    //   )
+                    // }
                     variant="outline"
                     className="flex items-center space-x-2"
                   >
@@ -214,10 +224,16 @@ export function PlantationDetailsModal({ plantation, isOpen, onClose }: Plantati
                     <span>View on Map</span>
                     <ExternalLink className="h-4 w-4" />
                   </Button>
+                </a>
+                  
 
                   {plantation.blockchainTxHash && (
-                    <Button
-                      onClick={() => window.open(`https://etherscan.io/tx/${plantation.blockchainTxHash}`, "_blank")}
+                    <a 
+                      href={`https://etherscan.io/tx/${plantation.blockchainTxHash}`}
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      <Button
+                      // onClick={() => window?.open(, "_blank")}
                       variant="outline"
                       className="flex items-center space-x-2"
                     >
@@ -225,6 +241,8 @@ export function PlantationDetailsModal({ plantation, isOpen, onClose }: Plantati
                       <span>View on Blockchain</span>
                       <ExternalLink className="h-4 w-4" />
                     </Button>
+                    </a>
+                    
                   )}
                 </div>
               </CardContent>

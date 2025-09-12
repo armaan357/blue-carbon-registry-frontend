@@ -192,14 +192,19 @@ export function TransactionHistory({ walletAddress }: TransactionHistoryProps) {
                     </p>
                     <p className="text-xs text-muted-foreground">≈ ${(tx.amount * 15).toLocaleString()} USD</p>
                   </div>
-
-                  <Button
+                  <a 
+                    href={`https://etherscan.io/tx/${tx.txHash}`}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                      <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => window.open(`https://etherscan.io/tx/${tx.txHash}`, "_blank")}
+                    // onClick={() => window?.open(`https://etherscan.io/tx/${tx.txHash}`, "_blank")}
                   >
                     <ExternalLink className="h-4 w-4" />
                   </Button>
+                    </a>
+                  
                 </div>
               </div>
             ))}
