@@ -99,7 +99,7 @@ export default function RegistryPage() {
   const handleViewDetails = (plantation: PlantationRecord) => {
     setSelectedPlantation(plantation);
     setIsModalOpen(true);
-  }
+  };
 
   const stats = {
     total: mockPlantations.length,

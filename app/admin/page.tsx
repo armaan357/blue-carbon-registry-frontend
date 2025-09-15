@@ -54,6 +54,7 @@ const mockAdminPlantations = [
     createdAt: "2024-03-05",
     images: ["/salt-marsh-plants.jpg"],
     description: "Comprehensive salt marsh restoration project in the Rann of Kutch.",
+    carbonEstimateKg: 0,
   },
   {
     id: "4",
@@ -66,6 +67,7 @@ const mockAdminPlantations = [
     createdAt: "2024-03-12",
     images: ["/coastal-wetland.jpg"],
     description: "Wetland restoration around Chilika Lake ecosystem.",
+    carbonEstimateKg: 0,
   },
   {
     id: "5",
@@ -78,6 +80,7 @@ const mockAdminPlantations = [
     createdAt: "2024-03-18",
     images: ["/mangrove-community-planting.jpg"],
     description: "Community-driven mangrove restoration in Krishna Delta.",
+    carbonEstimateKg: 0,
   },
 ]
 
@@ -374,7 +377,11 @@ export default function AdminPage() {
       />
 
       <MintTokensModal
-        plantation={selectedPlantation}
+        plantation={
+          selectedPlantation && (selectedPlantation.status === "minted" || selectedPlantation.status === "verified")
+            ? selectedPlantation
+            : null
+        }
         isOpen={isMintModalOpen}
         onClose={() => setIsMintModalOpen(false)}
         onMint={handleMint}
